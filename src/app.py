@@ -4,7 +4,7 @@ from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 from models import db
-from routes import api
+from routes.auth import api
 from dotenv import load_dotenv
 
 load_dotenv()
