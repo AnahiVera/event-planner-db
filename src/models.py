@@ -29,3 +29,9 @@ class User(db.Model):
         db.session.delete(self)
         db.session.commit()
 
+class Profile(db.Model):
+    __tablename__= 'profiles'
+    id = db.Column(db.Integer, primary_key=True)
+    
+
+
