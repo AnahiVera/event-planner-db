@@ -24,8 +24,6 @@ jwt = JWTManager(app)
 CORS(app)
 
 app.register_blueprint(bp_auth, url_prefix="/api")
-app.register_blueprint(bp_auth, url_prefix="/api") ;""" para rutas """
-
 
 @app.route('/')
 def main():
