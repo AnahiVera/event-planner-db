@@ -4,8 +4,9 @@ from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 from models import db
-from routes.auth import api
 from dotenv import load_dotenv
+from routes.auth import bp_auth 
+
 
 load_dotenv()
 
@@ -22,11 +23,18 @@ Migrate(app, db)
 jwt = JWTManager(app)
 CORS(app)
 
-app.register_blueprint(api, url_prefix="/api")
+app.register_blueprint(bp_auth, url_prefix="/api")
+app.register_blueprint(bp_auth, url_prefix="/api") ;""" para rutas """
+
 
 @app.route('/')
 def main():
     return jsonify({"msg": "Server running correctly"}), 200
 
+
+
+
 if __name__ == '__main__':
     app.run()
+
+    
