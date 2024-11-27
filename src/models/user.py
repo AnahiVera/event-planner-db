@@ -1,5 +1,5 @@
-from flask_sqlalchemy import SQLAlchemy
-db=SQLAlchemy()
+from . import db
+
 
 class User(db.Model):
     __tablename__= 'users'
@@ -8,7 +8,7 @@ class User(db.Model):
     password = db.Column(db.String, unique=False, nullable=False)
     is_active = db.Column(db.Boolean, default=True)
 
-    profile = db.relationship('Profile', backref="user")
+    profile = db.relationship('Profile', backref="users")
 
     def serialize(self):
         return {
@@ -28,24 +28,3 @@ class User(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
-
-class Profile(db.Model):
-    __tablename__= 'profiles'
-    id = db.Column(db.Integer, primary_key=True)
-    
-    def serialize(self):
-        return {
-            "id":self.id
-        }
-    
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
-
-    def update(self):
-        db.session.commit()
-
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
-

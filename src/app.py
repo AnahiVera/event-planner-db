@@ -6,7 +6,7 @@ from flask_cors import CORS
 from models import db
 from dotenv import load_dotenv
 from routes.auth import bp_auth 
-
+from routes.tasks import tasks
 
 load_dotenv()
 
@@ -24,12 +24,11 @@ jwt = JWTManager(app)
 CORS(app)
 
 app.register_blueprint(bp_auth, url_prefix="/api")
+app.register_blueprint(tasks, url_prefix="/api")
 
 @app.route('/')
 def main():
     return jsonify({"msg": "Server running correctly"}), 200
-
-
 
 
 if __name__ == '__main__':
