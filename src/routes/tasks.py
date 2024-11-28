@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 
-tasks = Blueprint("tasks", __name__)
+bp_tasks = Blueprint("bp_tasks", __name__)
 
-@tasks.route('/tasks', methods=['POST'])
+@bp_tasks.route('/tasks', methods=['POST'])
 def addtask():
     pass
