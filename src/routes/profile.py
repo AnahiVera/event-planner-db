@@ -4,8 +4,8 @@ bp_profile = Blueprint("bp_profile", __name__)
 
 @bp_profile.route('/profile', methods=['GET'])
 def profile():
-    pass
+    return jsonify({"path": "profile"})
 
 @bp_profile.route('/profile', methods=['PUT'])
 def update_profile():
-    pass
+    return jsonify({"path": "update profile"})
