@@ -1,8 +1,15 @@
 from . import db
 
-class Profile(db.Model):
-    __tablename__= 'profiles'
+class Event(db.Model):
+    __tablename__= 'events'
     id = db.Column(db.Integer, primary_key=True)
+    tittle = db.Column()
+    description = db.Column()
+    date = db.Column()
+    time = db.Column()
+    location = db.Column()
+    organizer_id = db.Column()
+    created_at = db.Column()
     
     def serialize(self):
         return {
