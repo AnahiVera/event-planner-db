@@ -1,13 +1,14 @@
 from . import db
+from datetime import datetime
 
 class Task (db.Model):
     __tablename__= 'tasks'
     id = db.Column(db.Integer, primary_key=True)
-    tittle = db.Column()
-    description = db.Column()
-    status = db.Column()
-    event_id = db.Column()
-    assignee_id = db.Column()
+    event_id = db.Column(db.Integer, db.ForeignKey('event.id'), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
+    status = db.Column(db.Boolean, default=False)
+    assigned_to = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
+    due_date = db.Column(db.DateTime)
 
     def serialize(self):
         return {

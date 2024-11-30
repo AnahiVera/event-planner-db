@@ -1,15 +1,18 @@
 from . import db
-"""  status invitado confirmado rechazado """
+
+"""  status invitado, confirmado, rechazado """
+
 class Participant (db.Model):
     __tablename__= 'participants'
-    id = db.Column()
-    event_id = db.Column()
-    user_id =db.Column()
-    status = db.Column()
+    id = db.Column(db.Integer, primary_key=True)
+    event_id = db.Column(db.Integer, db.ForeignKey('event.id'), nullable=False)
+    user_id =db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    status = db.Column(db.String(20), default='invited')
 
     def serialize(self):
         return {
-            "id":self.id
+            "id":self.id,
+
         }
     
     def save(self):

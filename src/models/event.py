@@ -19,7 +19,9 @@ class Event(db.Model):
             "description": self.description,
             "date": self.date,
             "location": self.location,
-            "organizer_id": self.user.serialize()
+            "organizer_id": self.user.serialize(),
+            "created_at": self.created_at,
+            "updated_at": self.updated_at
         }
     
     def save(self):
