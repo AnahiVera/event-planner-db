@@ -12,6 +12,9 @@ class Participant (db.Model):
     def serialize(self):
         return {
             "id":self.id,
+            "event_id": self.event.serialize(),
+            "user_id": self.user.serialize(),
+            "status": self.status
 
         }
     

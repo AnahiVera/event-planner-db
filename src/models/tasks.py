@@ -1,6 +1,8 @@
 from . import db
 from datetime import datetime
 
+""" status completed or pending """
+
 class Task (db.Model):
     __tablename__= 'tasks'
     id = db.Column(db.Integer, primary_key=True)
@@ -12,7 +14,12 @@ class Task (db.Model):
 
     def serialize(self):
         return {
-            "id":self.id
+            "id":self.id,
+            "event_id": self.event.serialize(),
+            "tittle": self.tittle,
+            "status": self.status,
+            "assigned_to": self.user.serialize(),
+            "due_date": self.due_date
         }
     
     def save(self):
