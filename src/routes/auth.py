@@ -9,11 +9,11 @@ bp_auth = Blueprint("bp_auth", __name__)
 @bp_auth.route('/register', methods=['POST'])
 def register():
     
-    username = request.json.get('username')
+    email = request.json.get('email')
     password = request.json.get('password')
 
-    if not username:
-        return jsonify({"message": "Username is required"}), 422
+    if not email:
+        return jsonify({"message": "Email is required"}), 422
     
     if not password:
         return jsonify({"message": "Password is required"}), 422

@@ -7,7 +7,7 @@ from models import db
 from dotenv import load_dotenv
 from routes.auth import bp_auth 
 from routes.tasks import bp_tasks
-from routes.profile import bp_profile
+from routes.event import bp_event
 
 load_dotenv()
 
@@ -25,7 +25,7 @@ jwt = JWTManager(app)
 CORS(app)
 
 app.register_blueprint(bp_auth, url_prefix="/api")
-app.register_blueprint(bp_profile, url_prefix="/api")
+app.register_blueprint(bp_event, url_prefix="/api")
 app.register_blueprint(bp_tasks, url_prefix="/api")
 
 @app.route('/')
