@@ -6,10 +6,10 @@ from datetime import datetime
 class Task (db.Model):
     __tablename__= 'tasks'
     id = db.Column(db.Integer, primary_key=True)
-    event_id = db.Column(db.Integer, db.ForeignKey('event.id'), nullable=False)
+    event_id = db.Column(db.Integer, db.ForeignKey('events.id'), nullable=False)
     title = db.Column(db.String(100), nullable=False)
-    status = db.Column(db.Boolean, default=False)
-    assigned_to = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
+    status = db.Column(db.Boolean, default='pending')
+    assigned_to = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=True)
     due_date = db.Column(db.DateTime)
 
     def serialize(self):

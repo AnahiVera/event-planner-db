@@ -4,13 +4,13 @@ from datetime import datetime
 class Event(db.Model):
     __tablename__= 'events'
     id = db.Column(db.Integer, primary_key=True)
-    tittle = db.Column(db.String, nullable=False)
+    tittle = db.Column(db.String(120), nullable=False)
     description = db.Column(db.String)
     date = db.Column(db.DateTime, nullable=False )
     location = db.Column(db.String)
-    organizer_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.now(datetime.timezone.utc))
-    updated_at = db.Column(db.DateTime, onupdate=datetime.now(datetime.timezone.utc))
+    organizer_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.now())
+    updated_at = db.Column(db.DateTime, onupdate=datetime.now())
     
     def serialize(self):
         return {
