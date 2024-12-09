@@ -9,6 +9,9 @@ class User(db.Model):
     password = db.Column(db.String, nullable=False)
     is_active = db.Column(db.Boolean, default=True)
 
+    """ relationships """
+    events = db.relationship('Event', backref='creator', lazy=True)
+    tasks = db.relationship('Task', backref='assignee', lazy=True)
     
     def serialize(self):
         return {

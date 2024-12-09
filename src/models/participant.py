@@ -9,6 +9,8 @@ class Participant (db.Model):
     user_id =db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     status = db.Column(db.String(20), default='invited')
 
+    user = db.relationship('User', backref='participations', lazy=True)
+
     def serialize(self):
         return {
             "id":self.id,

@@ -1,7 +1,7 @@
 import datetime
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import create_access_token
-from models import User, Profile
+from models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 
 bp_auth = Blueprint("bp_auth", __name__)
