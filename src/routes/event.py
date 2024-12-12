@@ -6,8 +6,12 @@ from werkzeug.security import generate_password_hash, check_password_hash
 bp_event = Blueprint("bp_event", __name__)
 
 @bp_event.route('/event', methods=['GET'])
+def getEvent():
+    return jsonify({"path": "get event"})
+
+@bp_event.route('/event', methods=['POST'])
 def addEvent():
-    return jsonify({"path": "event"})
+    return jsonify({"path": "add event"})
 
 @bp_event.route('/event', methods=['PATCH'])
 def update_event():
