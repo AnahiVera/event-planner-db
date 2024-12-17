@@ -75,13 +75,13 @@ This API serves as the backend for a front-end application dedicated to event pl
 
 ### Built With
 
-* ![Python][python_shield]
-* ![Flask][flask_shield]
-* ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
-* ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+ ![Python][python_shield]
+ ![Flask][flask_shield]
+ ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+ ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 
 
-[![LinkedIn][linkedin-shield]][linkedin-url]
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
