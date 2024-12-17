@@ -75,13 +75,13 @@ This API serves as the backend for a front-end application dedicated to event pl
 
 ### Built With
 
-* ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-* ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+* ![Python][python_shield]
+* ![Flask][flask_shield]
 * ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 * ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 
 
-
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -94,7 +94,8 @@ Once installed, ensure you can access the database using a management tool such 
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them. (python - pipenv)
+Python installation is required for you to use the software (https://www.python.org/downloads/) and install the following.
+
 * pipenv 
   ```sh
   pip install pipenv
@@ -115,13 +116,24 @@ pipenv shell
 ```sh
 pipenv install
 ```
-4. Enter your API_KEY in `.env`
+4. Configure Environment Variables in `.env`
+
+Configure your API_KEY 
 
 ```env
 API_KEY='ENTER YOUR API'
 ```
+Configure your DATABASE_URL
 
-5. Change git remote url to avoid accidental pushes to base project
+```env
+DATABASE_URI="postgresql://<user>:<pass>@<host>:<port>/<database_name>"
+```
+5. Start Project 
+```sh
+python src/app.py
+```
+
+6. Change git remote url to avoid accidental pushes to base project
 ```sh
 git remote set-url origin AnahiVera/event-planner-db
 git remote -v # confirm the changes
@@ -186,3 +198,5 @@ Project Link: [https://github.com/AnahiVera/event-planner-db](https://github.com
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/anahi-vera-rogel
 [product-screenshot]: images/screenshot.png
+[python_shield]: https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54
+[flask_shield]: https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white
