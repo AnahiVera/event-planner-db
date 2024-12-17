@@ -95,35 +95,37 @@ Once installed, ensure you can access the database using a management tool such 
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them. (python - pipenv)
-* npm
+* pipenv 
   ```sh
-  npm install npm@latest -g
+  pip install pipenv
   ```
 
 ### Installation
 
 
 1. Clone the repo
-   ```sh
-   git clone https://github.com/AnahiVera/event-planner-db.git
-   ```
+```sh
+ git clone https://github.com/AnahiVera/event-planner-db.git
+```
 2. Open environment
-   ```sh
-   pipenv shell
-   ```
+```sh
+pipenv shell
+```
 3. Install packages
-   ```sh
-   pipenv install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+```sh
+pipenv install
+```
+4. Enter your API_KEY in `.env`
+
+```env
+API_KEY='ENTER YOUR API'
+```
+
 5. Change git remote url to avoid accidental pushes to base project
-   ```sh
-   git remote set-url origin AnahiVera/event-planner-db
-   git remote -v # confirm the changes
-   ```
+```sh
+git remote set-url origin AnahiVera/event-planner-db
+git remote -v # confirm the changes
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
