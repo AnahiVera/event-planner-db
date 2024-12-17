@@ -1,10 +1,3 @@
-
-
-Usuarios - Eventos:         Un usuario puede crear muchos eventos.
-Eventos - Participantes:    Muchos usuarios pueden estar invitados a muchos eventos.
-Eventos - Tareas:           Un evento puede tener muchas tareas.
-
-
 <!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
@@ -55,11 +48,10 @@ Eventos - Tareas:           Un evento puede tener muchas tareas.
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    
   </ol>
 </details>
 
@@ -137,22 +129,6 @@ This is an example of how to list things you need to use the software and how to
 
 
 
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/AnahiVera/event-planner-db/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- CONTRIBUTING -->
 ## Contributing
 
@@ -175,7 +151,11 @@ Don't forget to give the project a star! Thanks again!
   <img src="https://contrib.rocks/image?repo=AnahiVera/event-planner-db" alt="contrib.rocks image" />
 </a>
 
+## License
 
+Distributed under the project_license. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTACT -->
 ## Contact
@@ -186,16 +166,6 @@ Project Link: [https://github.com/AnahiVera/event-planner-db](https://github.com
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
