@@ -2,6 +2,6 @@ services:
   api:
     build: .
     environment:
-      DATABASE_URI: postgresql://postgres:postgres@localhost:5433/event-planner
+      DATABASE_URL: postgresql://event_planner_db_n986_user:JT9DmVCYlHoImGjPBDkrsaatcelfiMpI@dpg-ctnh6s5ds78s73c4r2fg-a.oregon-postgres.render.com/event_planner_db_n986    
     ports:
       - "8100:8100" 
