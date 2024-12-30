@@ -6,7 +6,7 @@ from models import db
 
 bp_users = Blueprint("bp_users", __name__)
 
-@bp_users.route('/api/users',  methods=['GET'])
+@bp_users.route('/users',  methods=['GET'])
 def get_users():
 
     users = User.query.all()
@@ -14,7 +14,7 @@ def get_users():
 
     return jsonify({"users": users}), 200
 
-@bp_users.route('/api/users', methods=['POST'])
+@bp_users.route('/users', methods=['POST'])
 def add_user():
 
     name = request.json.get('name')
