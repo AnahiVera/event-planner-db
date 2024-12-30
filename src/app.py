@@ -33,35 +33,6 @@ app.register_blueprint(bp_tasks, url_prefix="/api")
 def main():
     return jsonify({"msg": "Server running correctly"}), 200
 
-@app.route('/api/users')
-def get_users():
-
-    users = User.query.all()
-    users= {user.name for user in users}
-
-    return jsonify({"users": users}), 200
-
-@app.route('/api/users', methods=['POST'])
-def add_user():
-
-    name = request.json.get('name')
-
-    if not name:
-        return jsonify({"status": "error", "message": "Name is required"}), 422
-    
-    found = User.query.filter_by(name=name).first()
-
-    if found: 
-        return jsonify({"status": "error", "message": "User already exists"}), 422
-    
-    user = User()
-    user.name = name
-
-    db.session.add(user)
-    db.session.commit()
-
-    return jsonify({"status": "success", "message": "User added successfully"}), 201
-
 
 if __name__ == '__main__':
     app.run()
