@@ -6,7 +6,7 @@ from models import db
 
 bp_users = Blueprint("bp_users", __name__)
 
-@bp_users.route('/api/users')
+@bp_users.route('/api/users',  methods=['GET'])
 def get_users():
 
     users = User.query.all()

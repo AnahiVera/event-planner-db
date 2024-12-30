@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 from routes.auth import bp_auth 
 from routes.tasks import bp_tasks
 from routes.event import bp_event
+from routes.users import bp_users
 from models import User
 
 load_dotenv()
@@ -28,6 +29,7 @@ CORS(app)
 app.register_blueprint(bp_auth, url_prefix="/api")
 app.register_blueprint(bp_event, url_prefix="/api")
 app.register_blueprint(bp_tasks, url_prefix="/api")
+app.register_blueprint(bp_users, url_prefix="/api")
 
 @app.route('/')
 def main():
