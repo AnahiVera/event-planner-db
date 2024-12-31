@@ -12,7 +12,8 @@
 [![Issues][issues-shield]][issues-url]
 [![project_license][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-
+![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
 
 <!-- PROJECT LOGO -->
@@ -21,7 +22,12 @@
   <a href="https://github.com/AnahiVera/event-planner-db">
   </a>
 
+ 
+
 <h3 align="center">Event-planner-Db</h3>
+
+<a href= "https://event-planner-db-ns7f.onrender.com"> Render Live
+ </a>
 
   <p align="center">
     This project involves the development of an API that facilitates the creation, reading, updating, and deletion (CRUD) of data within a PostgreSQL database. The API is designed to automatically generate the necessary database tables and establish connections to the database. It is fully configured to run in a Docker environment, ensuring seamless deployment and scalability. 

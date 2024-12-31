@@ -13,24 +13,3 @@ def get_users():
 
     return jsonify({"users": users}), 200
 
-
-@bp_users.route('/users', methods=['POST'])
-def add_user():
-
-    email = request.json.get('email')
-
-    if not email:
-        return jsonify({"status": "error", "message": "email is required"}), 422
-    
-    found = User.query.filter_by(email=email).first()
-
-    if found: 
-        return jsonify({"status": "error", "message": "email already exists"}), 422
-    
-    user = User()
-    user.email = email
-
-    db.session.add(user)
-    db.session.commit()
-
-    return jsonify({"status": "success", "message": "User added successfully"}), 201
