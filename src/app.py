@@ -9,7 +9,7 @@ from routes.auth import bp_auth
 from routes.tasks import bp_tasks
 from routes.event import bp_event
 from routes.users import bp_users
-from models import User
+
 
 load_dotenv()
 
