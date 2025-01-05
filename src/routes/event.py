@@ -34,7 +34,7 @@ def add_event():
     updated_at = data.get('updated_at')
 
     if not title or not date:
-        return jsonify({"error": "Título y fecha son obligatorios"}), 400
+        return jsonify({"error": "Tittle and date are required"}), 400
 
 
     new_event = Event(
@@ -54,10 +54,36 @@ def add_event():
 
 @bp_event.route('/event', methods=['PATCH'])
 @jwt_required()
-def update_event():
-    return jsonify({"path": "update event"})
+def update_event(event_id):
+
+    current_user_id = get_jwt_identity() 
+    event = Event.query.filter_by(id=event_id, user_id=current_user_id).first()
+
+    if not event:
+        return jsonify({"status": "error", "message": "Event not found"}), 404
+    
+    data = request.get_json()
+
+    event.title = data.get('title', event.title)
+    event.description = data.get('description', event.description)
+    event.date = data.get('date', event.date)
+    event.location = data.get('location', event.location)
+    event.updated_at = data.get('updated_at', event.updated_at)
+
+    db.session.commit()
+
+    return jsonify(event.serialize()), 200
 
 @bp_event.route('/event', methods=['DELETE'])
 @jwt_required()
-def delete_event():
-    return jsonify({"path": "delete event"})
+def delete_event(event_id):
+    current_user_id = get_jwt_identity()
+    event = Event.query.filter_by(id=event_id, user_id=current_user_id).first()
+
+    if not event:
+        return jsonify({"error": "Event not found or not authorized"}), 404
+
+    db.session.delete(event)
+    db.session.commit()
+
+    return jsonify({"message": "Evento eliminado con éxito"}), 200
