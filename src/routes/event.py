@@ -86,4 +86,4 @@ def delete_event(event_id):
     db.session.delete(event)
     db.session.commit()
 
-    return jsonify({"message": "Evento eliminado con éxito"}), 200
+    return jsonify({"message": "Event deleted succesfully"}), 200
