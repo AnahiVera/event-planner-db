@@ -28,8 +28,6 @@ def register():
     if email_found:
         return jsonify({"status": "error", "message": "Email is already in use!"}), 422
     
-    if user_found:
-        return jsonify({"status": "error", "message": "Username is already in use!"}), 422
     
     user = User()
 
