@@ -9,12 +9,8 @@ bp_auth = Blueprint("bp_auth", __name__)
 @bp_auth.route('/register', methods=['POST'])
 def register():
 
-    name = request.json.get ('name')
     email = request.json.get('email')
     password = request.json.get('password')
-
-    if not name:
-        return jsonify({"status": "error","message": "Name is required"}), 422
 
     if not email:
         return jsonify({"status": "error","message": "Email is required"}), 422
@@ -24,18 +20,16 @@ def register():
     
     email_found = User.query.filter_by(email = email).first()
     
-
     if email_found:
         return jsonify({"status": "error", "message": "Email is already in use!"}), 422
     
     
     user = User()
-
-    user.name = name
     user.email = email
     user.password = generate_password_hash(password)
     user.save()
-
+    
+    
     if user: 
         expire = datetime.timedelta(days=5)
         access_token = create_access_token(identity=user.id, expires_delta=expire)

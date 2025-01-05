@@ -4,19 +4,16 @@ from . import db
 class User(db.Model):
     __tablename__= 'users'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=False)
     email =  db.Column(db.String, unique=True, nullable=False)
     password = db.Column(db.String, nullable=False)
     is_active = db.Column(db.Boolean, default=True)
 
-    """ relationships """
     events = db.relationship('Event', backref='creator', lazy=True)
     tasks = db.relationship('Task', backref='assignee', lazy=True)
     
     def serialize(self):
         return {
             "id":self.id,
-            "name":self.name,
             "email":self.email,
             "is_active":self.is_active,
         }
