@@ -23,7 +23,7 @@ def register():
         return jsonify({"status": "error","message": "Password is required"}), 422
     
     email_found = User.query.filter_by(email = email).first()
-    user_found = User.query.filter_by(name = name).first()
+    
 
     if email_found:
         return jsonify({"status": "error", "message": "Email is already in use!"}), 422
