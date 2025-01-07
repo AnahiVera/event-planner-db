@@ -4,13 +4,13 @@ from datetime import datetime
 class Event(db.Model):
     __tablename__= 'events'
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(120), nullable=False)
-    description = db.Column(db.String)
-    date = db.Column(db.DateTime, nullable=False )
-    location = db.Column(db.String)
+    title = db.Column(db.String, default="", nullable=False)
+    description = db.Column(db.String, default="")
+    date = db.Column(db.DateTime, default=datetime.now, nullable=False )
+    location = db.Column(db.String, default="")
     organizer_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.now())
-    updated_at = db.Column(db.DateTime, onupdate=datetime.now())
+    created_at = db.Column(db.DateTime, default=datetime.now)
+    
 
     tasks = db.relationship('Task', backref='event', lazy=True)
     participants = db.relationship('Participant', backref='event', lazy=True)
@@ -22,9 +22,8 @@ class Event(db.Model):
             "description": self.description,
             "date": self.date,
             "location": self.location,
-            "organizer_id": self.user.serialize(),
-            "created_at": self.created_at,
-            "updated_at": self.updated_at
+            "organizer_id": self.organizer_id,
+            "created_at": self.created_at
         }
     
     def save(self):

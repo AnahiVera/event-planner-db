@@ -27,25 +27,25 @@ def add_event():
         return jsonify({"status": "error", "message": "User is not authorized"}), 401
     
     title = data.get('title')
-    description = data.get('description')
-    date = data.get('date')
-    location = data.get('location')
-    organizer_id = data.get('organizer_id')
-    created_at = data.get('created_at', datetime.now())
-    updated_at = data.get('updated_at', datetime.now())
-
-    if not title or not date:
-        return jsonify({"error": "Title and date are required"}), 400
-
+    if not title or not isinstance(title, str):
+        return jsonify({"error": "Title must be a non-empty string"}), 400
+    
+    try:
+        date = datetime.strptime(data.get('date'), '%Y-%m-%d')
+    except (ValueError, TypeError):
+        return jsonify({"error": "Date must be in the format YYYY-MM-DD"}), 400
+    
+    description = data.get('description', '')
+    location = data.get('location', '')
+    organizer_id = current_user_id
+    
 
     new_event = Event(
         title=title,
         description=description,
         date=date,
         location=location,
-        organizer_id=organizer_id,
-        created_at=created_at,
-        updated_at=updated_at   
+        organizer_id=organizer_id, 
     )
 
     db.session.add(new_event)
