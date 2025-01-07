@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from models import Event,User,db
+from datetime import datetime
 
 bp_event = Blueprint("bp_event", __name__)
 
@@ -30,11 +31,11 @@ def add_event():
     date = data.get('date')
     location = data.get('location')
     organizer_id = data.get('organizer_id')
-    created_at = data.get('created_at')
-    updated_at = data.get('updated_at')
+    created_at = data.get('created_at', datetime.now())
+    updated_at = data.get('updated_at', datetime.now())
 
     if not title or not date:
-        return jsonify({"error": "Tittle and date are required"}), 400
+        return jsonify({"error": "Title and date are required"}), 400
 
 
     new_event = Event(
@@ -42,7 +43,7 @@ def add_event():
         description=description,
         date=date,
         location=location,
-        organizer_id=current_user_id,
+        organizer_id=organizer_id,
         created_at=created_at,
         updated_at=updated_at   
     )
@@ -50,7 +51,7 @@ def add_event():
     db.session.add(new_event)
     db.session.commit()
 
-    return jsonify(new_event.serialize()), 201
+    return jsonify({"status": "success", "message": "Event added successfully"}), 201
 
 @bp_event.route('/event', methods=['PATCH'])
 @jwt_required()

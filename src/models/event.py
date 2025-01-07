@@ -4,7 +4,7 @@ from datetime import datetime
 class Event(db.Model):
     __tablename__= 'events'
     id = db.Column(db.Integer, primary_key=True)
-    tittle = db.Column(db.String(120), nullable=False)
+    title = db.Column(db.String(120), nullable=False)
     description = db.Column(db.String)
     date = db.Column(db.DateTime, nullable=False )
     location = db.Column(db.String)
@@ -18,7 +18,7 @@ class Event(db.Model):
     def serialize(self):
         return {
             "id":self.id,
-            "tittle": self.tittle,
+            "title": self.title,
             "description": self.description,
             "date": self.date,
             "location": self.location,
