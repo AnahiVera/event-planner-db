@@ -11,7 +11,6 @@ class Event(db.Model):
     organizer_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now)
     
-
     tasks = db.relationship('Task', backref='event', lazy=True)
     participants = db.relationship('Participant', backref='event', lazy=True)
     
