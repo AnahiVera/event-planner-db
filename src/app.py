@@ -33,7 +33,7 @@ app.register_blueprint(bp_users, url_prefix="/api")
 
 @app.route('/')
 def main():
-    return jsonify({"msg": "Server running correctly"}), 200
+    return jsonify({"status": "success", "message": "Server running successfully"}), 200
 
 
 if __name__ == '__main__':

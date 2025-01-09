@@ -1,33 +1,40 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from models import Event,User,db
+from models import Event, User, db
 from datetime import datetime
 
 bp_event = Blueprint("bp_event", __name__)
 
-@bp_event.route('/event', methods=['GET'])
+@bp_event.route('/events', methods=['GET'])
 @jwt_required()
 def get_events():
 
     current_user_id = get_jwt_identity() 
     events = Event.query.filter_by(user_id=current_user_id).all()
 
+    if not events:
+        return jsonify({"status": "error", "message": "No events found"}), 404
+
     events_json = [event.serialize() for event in events]
 
-    return jsonify({events_json}), 200
+    return jsonify(events_json), 200
 
-@bp_event.route('/event', methods=['POST'])
+@bp_event.route('/events', methods=['POST'])
 @jwt_required()
 def add_event():
 
     current_user_id = get_jwt_identity() 
     data = request.get_json()
+
+    # Debugging: Print the received data
+    print("Received data:", data)
+
     user = User.query.get(current_user_id)
     if not user:
         return jsonify({"status": "error", "message": "User is not authorized"}), 401
     
     title = data.get('title')
-    if not title or not isinstance(title, str):
+    if not title:
         return jsonify({"error": "Title must be a non-empty string"}), 400
     
     try:
@@ -53,7 +60,7 @@ def add_event():
 
     return jsonify({"status": "success", "message": "Event added successfully"}), 201
 
-@bp_event.route('/event', methods=['PATCH'])
+@bp_event.route('events/<int:event_id>', methods=['PATCH'])
 @jwt_required()
 def update_event(event_id):
 
@@ -69,13 +76,13 @@ def update_event(event_id):
     event.description = data.get('description', event.description)
     event.date = data.get('date', event.date)
     event.location = data.get('location', event.location)
-    event.updated_at = data.get('updated_at', event.updated_at)
+    event.updated_at = datetime.now()
 
     db.session.commit()
 
     return jsonify(event.serialize()), 200
 
-@bp_event.route('/event', methods=['DELETE'])
+@bp_event.route('events/<int:event_id>', methods=['DELETE'])
 @jwt_required()
 def delete_event(event_id):
     current_user_id = get_jwt_identity()
